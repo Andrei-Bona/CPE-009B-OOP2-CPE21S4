@@ -42,6 +42,7 @@ class MyWindow:
         num2 = int(self.Entry2.get())
         result = num1 + num2
         self.Entry3.insert(END, str(result))
+        
     def sub (self):
         self.Entry3.delete(0, 'end')
         num1 = int(self.Entry1.get())
