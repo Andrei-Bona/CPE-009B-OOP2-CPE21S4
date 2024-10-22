@@ -93,13 +93,13 @@ class App(QWidget):
             return
         QMessageBox.information(self, "Submitted", "Successfully Submitted", QMessageBox.Ok)
         self.clear_input()
-        message = f"Submitted:\nFirst Name: {first_name}\nLast Name: {last_name}\nUsername: {username}\nEmail: {email}\nContact Number: {contact_number}"
 
-        t = TextFileReaderWrite()
-        t.append(filepath="sample.txt", data=message)
-        t.read("sample.txt")
+        with open('accounts.txt', mode='a') as file:  # Append mode
+            file.write(f"Submitted:\nFirst Name: {first_name}\nLast Name: {last_name}\nUsername: {username}\nEmail: {email}\nContact Number: {contact_number}")
 
-
+        QMessageBox.information(self, "Registration Successful", "Your account has been registered successfully!",
+                                QMessageBox.Ok)
+        self.clear_input()  # Optionally clear inputs after successful registration
 
 
     def clear_input(self):
@@ -109,4 +109,3 @@ class App(QWidget):
         self.password.clear()
         self.email.clear()
         self.con_number.clear()
-
